@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Mentor Quote</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daily Mentor</h1>
+            <p class="subtitle">Your daily dose of focused wisdom</p>
+        </header>
+
+        <main>
+            <div id="quote-container" class="quote-container">
+                <div class="loading">Loading your quote...</div>
+            </div>
+
+            <div id="quote-content" class="quote-content hidden">
+                <div class="quote-mark">"</div>
+                <p id="quote-text" class="quote-text"></p>
+                <div class="quote-mark closing">"</div>
+
+                <div class="meta">
+                    <div class="theme">
+                        <span class="label">Theme:</span>
+                        <span id="theme-text" class="value"></span>
+                    </div>
+
+                    <div class="today">
+                        <span class="label">Today:</span>
+                        <span id="today-text" class="value"></span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="new-quote-btn" class="btn-primary">Get New Quote</button>
+        </main>
+
+        <footer>
+            <p class="footer-text">A fresh perspective every morning</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

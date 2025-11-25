@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-light: #ecf0f1;
+    --text-dark: #2c3e50;
+    --background: #f8f9fa;
+    --card-background: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: var(--card-background);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 50px 40px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.quote-container {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.quote-content {
+    position: relative;
+    padding: 30px 20px;
+}
+
+.quote-content.hidden {
+    display: none;
+}
+
+.quote-mark {
+    font-size: 4rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 0.5;
+    margin-bottom: 20px;
+}
+
+.quote-mark.closing {
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-weight: 500;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.meta {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.theme, .today {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.value {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    display: block;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 40px auto 0;
+    padding: 15px 30px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+footer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .quote-mark {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+    }
+}
