@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.65" y2="1">
+      <stop offset="0%" stop-color="#4a2f0c"/>
+      <stop offset="42%" stop-color="#2c1a05"/>
+      <stop offset="100%" stop-color="#150c01"/>
+    </linearGradient>
+    <radialGradient id="w" cx="0.66" cy="0.28" r="0.6">
+      <stop offset="0%" stop-color="#ffb442" stop-opacity="0.42"/>
+      <stop offset="55%" stop-color="#ffb442" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffb442" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#g)"/>
+  <rect width="800" height="800" fill="url(#w)"/>
+  <rect width="800" height="800" filter="url(#n)" opacity="0.07"/>
+  <g fill="none" stroke="#fff1e0" stroke-width="1" opacity="0.10">
+    <line x1="0" y1="266" x2="800" y2="266"/>
+    <line x1="0" y1="533" x2="800" y2="533"/>
+    <line x1="266" y1="0" x2="266" y2="800"/>
+    <line x1="533" y1="0" x2="533" y2="800"/>
+  </g>
+  <g transform="translate(32 32)">
+    <rect x="0" y="0" rx="18" width="250" height="36" fill="#140b00" fill-opacity="0.72" stroke="#85796c"/>
+    <text x="20" y="24" font-family="system-ui,sans-serif" font-size="13" letter-spacing="1.4" fill="#fff1e0">PLACEHOLDER 800×800</text>
+  </g>
+</svg>
