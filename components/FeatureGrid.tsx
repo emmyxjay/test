@@ -21,19 +21,15 @@ const features = [
 export function FeatureGrid() {
   return (
     <section className="rail">
-      <div className="grid gap-[12px] border-t border-[var(--color-walnut)] pt-[32px] md:grid-cols-3">
+      <div className="grid gap-[12px] border-t border-line pt-[32px] md:grid-cols-3">
         {features.map((f) => (
           <div
             key={f.title}
-            className="flex flex-col gap-[12px] border-b border-[var(--color-walnut)] p-[12px] pb-[24px]"
+            className="flex flex-col gap-[14px] border-b border-line p-[12px] pb-[28px]"
           >
             <IconCircle name={f.icon} />
-            <h3 className="text-[14px] font-medium text-[var(--color-warm-cream)]">
-              {f.title}
-            </h3>
-            <p className="text-[14px] leading-[1.55] text-[var(--color-sand)]">
-              {f.body}
-            </p>
+            <h3 className="text-[16px] font-medium text-ink">{f.title}</h3>
+            <p className="text-[15px] leading-[1.6] text-muted">{f.body}</p>
           </div>
         ))}
       </div>

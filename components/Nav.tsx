@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/Button";
 import { Icon } from "./ui/Icon";
+import { ThemeToggle } from "./ui/ThemeToggle";
 
 const links = [
   { href: "/#system", label: "The system" },
@@ -33,15 +34,13 @@ export function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
-        solid || open
-          ? "bg-[var(--color-espresso)] border-b border-[var(--color-walnut)]"
-          : "bg-transparent"
+        solid || open ? "bg-canvas border-b border-line" : "bg-transparent"
       }`}
     >
-      <nav className="rail flex h-[68px] items-center justify-between gap-[12px]">
+      <nav className="rail flex h-[72px] items-center justify-between gap-[12px]">
         <Link
           href="/"
-          className="text-[15px] font-medium tracking-[-0.01em] text-[var(--color-warm-cream)]"
+          className="text-[16px] font-medium tracking-[-0.01em] text-ink"
           onClick={() => setOpen(false)}
         >
           SLOWBURN
@@ -52,7 +51,7 @@ export function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="text-[14px] text-[var(--color-warm-cream)] transition-colors hover:text-[var(--color-amber-forge)]"
+                className="text-[15px] text-ink transition-colors hover:text-accent"
               >
                 {l.label}
               </Link>
@@ -61,6 +60,7 @@ export function Nav() {
         </ul>
 
         <div className="hidden items-center gap-[12px] md:flex">
+          <ThemeToggle />
           <Button href="/#capture" variant="outline">
             Sign in
           </Button>
@@ -69,28 +69,35 @@ export function Nav() {
           </Button>
         </div>
 
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[9999px] border border-[var(--color-walnut)] text-[var(--color-warm-cream)] md:hidden"
-        >
-          <span className={open ? "rotate-45 transition-transform" : "transition-transform"}>
-            <Icon name="plus" size={18} />
-          </span>
-        </button>
+        <div className="flex items-center gap-[12px] md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-[9999px] border border-line text-ink"
+          >
+            <span
+              className={
+                open ? "rotate-45 transition-transform" : "transition-transform"
+              }
+            >
+              <Icon name="plus" size={18} />
+            </span>
+          </button>
+        </div>
       </nav>
 
       {open ? (
-        <div className="border-t border-[var(--color-walnut)] bg-[var(--color-espresso)] md:hidden">
+        <div className="border-t border-line bg-canvas md:hidden">
           <div className="rail flex flex-col gap-[4px] py-[20px]">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-[var(--color-walnut)] py-[14px] text-[19px] text-[var(--color-warm-cream)]"
+                className="border-b border-line py-[14px] text-[19px] text-ink"
               >
                 {l.label}
               </Link>

@@ -88,7 +88,7 @@ export function Icon({
 
 export function IconCircle({ name }: { name: keyof typeof paths }) {
   return (
-    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[9999px] border border-[var(--color-walnut)] text-[var(--color-warm-cream)]">
+    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[9999px] border border-line text-ink">
       <Icon name={name} />
     </span>
   );

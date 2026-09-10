@@ -31,32 +31,31 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="scroll-mt-[68px] bg-[var(--color-warm-cream)] py-[var(--section-gap)] text-[var(--color-espresso)]"
+      className="band-inverse scroll-mt-[72px] py-[var(--section-gap)]"
     >
       <div className="rail grid gap-[52px] lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-          {/* Amber is a dark-canvas signal only. On the cream band the
-              primary ink is Espresso and the CTA flips to a dark outline. */}
-          <p className="text-[12px] uppercase leading-[1.4] tracking-[0.01em] text-[var(--color-cedar)]">
-            Questions
-          </p>
+          {/* Inside .band-inverse every token flips, so the same
+              utilities and the same outline button read correctly against
+              whichever ground this band lands on. */}
+          <p className="t-caption">Questions</p>
           <h2 className="t-display mt-[16px] max-w-[14ch] text-balance">
             The ones people actually ask.
           </h2>
           <div className="mt-[28px]">
-            <Button href="/#capture" variant="dark">
+            <Button href="/#capture" variant="outline">
               Ask something else
             </Button>
           </div>
         </div>
 
-        <div className="border-t border-[var(--color-walnut)]">
+        <div className="border-t border-line">
           {faqs.map((f) => (
             <details
               key={f.q}
-              className="group border-b border-[var(--color-walnut)]"
+              className="group border-b border-line"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-[16px] py-[14px] text-[17px] font-medium leading-[1.35] marker:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-[16px] py-[18px] text-[18px] font-medium leading-[1.4] marker:hidden">
                 {f.q}
                 <span
                   aria-hidden="true"
@@ -76,7 +75,7 @@ export function Faq() {
                   </svg>
                 </span>
               </summary>
-              <p className="max-w-[62ch] pb-[18px] text-[15px] leading-[1.6] text-[var(--color-cedar)]">
+              <p className="max-w-[62ch] pb-[20px] text-[16px] leading-[1.65] text-muted">
                 {f.a}
               </p>
             </details>

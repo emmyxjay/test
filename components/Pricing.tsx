@@ -44,7 +44,7 @@ const tiers = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="section scroll-mt-[68px]">
+    <section id="pricing" className="scroll-mt-[72px] py-[var(--section-gap)]">
       <div className="rail">
         <div className="max-w-[46ch]">
           <p className="t-caption">Pricing</p>
@@ -62,22 +62,22 @@ export function Pricing() {
               key={t.name}
               className={`flex flex-col rounded-[6px] border p-[24px] ${
                 t.featured
-                  ? "border-[var(--color-amber-forge)]"
-                  : "border-[var(--color-walnut)]"
+                  ? "border-accent"
+                  : "border-line"
               }`}
             >
               <div className="flex items-center justify-between gap-[12px]">
                 <h3 className="t-heading-sm">{t.name}</h3>
-                {t.featured ? <Badge tone="amber">Most chosen</Badge> : null}
+                {t.featured ? <Badge tone="accent">Most chosen</Badge> : null}
               </div>
 
-              <p className="mt-[12px] text-[14px] text-[var(--color-sand)]">
+              <p className="mt-[12px] text-[15px] text-muted">
                 {t.note}
               </p>
 
               <p className="mt-[24px] flex items-baseline gap-[6px]">
                 <span className="t-display tabular-nums">${t.price}</span>
-                <span className="text-[14px] text-[var(--color-driftwood)]">
+                <span className="text-[15px] text-label">
                   / month
                 </span>
               </p>
@@ -85,10 +85,10 @@ export function Pricing() {
               <ul className="mt-[24px] flex flex-col gap-[12px]">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-start gap-[10px]">
-                    <span className="mt-[3px] text-[var(--color-amber-forge)]">
+                    <span className="mt-[4px] shrink-0 text-accent">
                       <Icon name="proof" size={15} />
                     </span>
-                    <span className="text-[14px] leading-[1.5] text-[var(--color-sand)]">
+                    <span className="text-[15px] leading-[1.55] text-muted">
                       {f}
                     </span>
                   </li>

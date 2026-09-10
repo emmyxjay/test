@@ -24,7 +24,7 @@ export function Dial() {
   return (
     <section
       id="dial"
-      className="scroll-mt-[68px] bg-[var(--color-midnight-cocoa)] py-[var(--section-gap)]"
+      className="band-deep scroll-mt-[72px] py-[var(--section-gap)]"
     >
       <div className="rail grid items-center gap-[52px] lg:grid-cols-[0.95fr_1.05fr]">
         <div className="mx-auto w-full max-w-[420px]">
@@ -40,7 +40,7 @@ export function Dial() {
                 cx={d.cx}
                 cy={d.cy}
                 r={d.r}
-                fill="var(--color-warm-cream)"
+                fill="var(--ink)"
                 opacity={d.opacity}
               />
             ))}
@@ -49,7 +49,7 @@ export function Dial() {
               y1={CENTER - R + 18}
               x2={CENTER}
               y2={CENTER - 62}
-              stroke="var(--color-warm-cream)"
+              stroke="var(--ink)"
               strokeWidth="1"
               opacity="0.55"
             />
@@ -57,7 +57,7 @@ export function Dial() {
               x={CENTER}
               y={CENTER + 14}
               textAnchor="middle"
-              fill="var(--color-warm-cream)"
+              fill="var(--ink)"
               fontSize="76"
               fontWeight="500"
               letterSpacing="-2.5"
@@ -68,7 +68,7 @@ export function Dial() {
               x={CENTER}
               y={CENTER + 44}
               textAnchor="middle"
-              fill="var(--color-driftwood)"
+              fill="var(--ink-label)"
               fontSize="13"
               letterSpacing="1.2"
             >
@@ -88,7 +88,7 @@ export function Dial() {
             waiting to hear back. When the hour is up, the loop is closed for
             the day.
           </p>
-          <ul className="mt-[32px] border-t border-[var(--color-walnut)]">
+          <ul className="mt-[32px] border-t border-line">
             {[
               ["00:00 – 00:20", "Draft from the signal queue"],
               ["00:20 – 00:40", "Publish and route to capture"],
@@ -96,12 +96,12 @@ export function Dial() {
             ].map(([time, task]) => (
               <li
                 key={time}
-                className="flex flex-wrap items-baseline justify-between gap-[12px] border-b border-[var(--color-walnut)] py-[14px]"
+                className="flex flex-wrap items-baseline justify-between gap-[12px] border-b border-line py-[16px]"
               >
-                <span className="text-[13px] tabular-nums text-[var(--color-driftwood)]">
+                <span className="text-[14px] tabular-nums text-label">
                   {time}
                 </span>
-                <span className="text-[16px] text-[var(--color-warm-cream)]">
+                <span className="text-[17px] text-ink">
                   {task}
                 </span>
               </li>

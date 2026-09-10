@@ -37,7 +37,7 @@ const steps = [
 
 export function SystemSteps() {
   return (
-    <section id="system" className="section scroll-mt-[68px]">
+    <section id="system" className="scroll-mt-[72px] py-[var(--section-gap)]">
       <div className="rail">
         <div className="max-w-[54ch]">
           <p className="t-caption">The system</p>
@@ -51,20 +51,20 @@ export function SystemSteps() {
           </p>
         </div>
 
-        <ol className="mt-[52px] border-t border-[var(--color-walnut)]">
+        <ol className="mt-[52px] border-t border-line">
           {steps.map((s) => (
             <li
               key={s.n}
-              className="group grid gap-[12px] border-b border-[var(--color-walnut)] py-[28px] md:grid-cols-[64px_44px_1fr_minmax(0,52ch)] md:items-start md:gap-[24px]"
+              className="group grid gap-[12px] border-b border-line py-[28px] md:grid-cols-[64px_44px_1fr_minmax(0,52ch)] md:items-start md:gap-[24px]"
             >
-              <span className="text-[13px] text-[var(--color-driftwood)]">
+              <span className="text-[14px] tabular-nums text-label">
                 {s.n}
               </span>
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-[9999px] border border-[var(--color-walnut)] text-[var(--color-warm-cream)] transition-colors group-hover:border-[var(--color-amber-forge)] group-hover:text-[var(--color-amber-forge)]">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-[9999px] border border-line text-ink transition-colors group-hover:border-accent group-hover:text-accent">
                 <Icon name={s.icon} size={19} />
               </span>
               <h3 className="t-heading-lg">{s.title}</h3>
-              <p className="text-[16px] leading-[1.6] text-[var(--color-sand)]">
+              <p className="text-[17px] leading-[1.65] text-muted">
                 {s.body}
               </p>
             </li>

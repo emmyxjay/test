@@ -25,13 +25,21 @@ export const metadata: Metadata = {
   },
 };
 
+/* Runs before first paint so a stored theme choice does not flash the
+   other theme. No stored choice leaves the element unstamped, which is
+   what lets prefers-color-scheme decide. */
+const noFlash = `(function(){try{var t=localStorage.getItem("slowburn-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={interTight.variable}>
+    <html lang="en" className={interTight.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlash }} />
+      </head>
       <body>{children}</body>
     </html>
   );

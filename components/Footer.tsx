@@ -28,21 +28,21 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-midnight-cocoa)] pt-[52px] pb-[32px]">
+    <footer className="band-deep pt-[52px] pb-[32px]">
       <div className="rail">
-        <div className="grid gap-[32px] border-b border-[var(--color-walnut)] pb-[32px] md:grid-cols-[1.4fr_repeat(3,0.6fr)]">
+        <div className="grid gap-[32px] border-b border-line pb-[32px] md:grid-cols-[1.4fr_repeat(3,0.6fr)]">
           <div>
-            <p className="text-[15px] font-medium tracking-[-0.01em] text-[var(--color-warm-cream)]">
+            <p className="text-[16px] font-medium tracking-[-0.01em] text-ink">
               SLOWBURN
             </p>
-            <p className="mt-[12px] max-w-[34ch] text-[14px] leading-[1.55] text-[var(--color-sand)]">
+            <p className="mt-[12px] max-w-[34ch] text-[15px] leading-[1.6] text-muted">
               An AI growth system for solo founders. One loop, an hour a day.
             </p>
           </div>
 
           {columns.map((c) => (
             <div key={c.title}>
-              <p className="text-[12px] uppercase tracking-[0.01em] text-[var(--color-driftwood)]">
+              <p className="t-caption">
                 {c.title}
               </p>
               <ul className="mt-[12px] flex flex-col gap-[8px]">
@@ -50,7 +50,7 @@ export function Footer() {
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="text-[14px] text-[var(--color-warm-cream)] transition-colors hover:text-[var(--color-amber-forge)]"
+                      className="text-[15px] text-ink transition-colors hover:text-accent"
                     >
                       {l.label}
                     </Link>
@@ -61,7 +61,7 @@ export function Footer() {
           ))}
         </div>
 
-        <p className="mt-[24px] text-[12px] leading-[1.4] text-[var(--color-driftwood)]">
+        <p className="mt-[24px] text-[13px] leading-[1.4] text-label">
           © {new Date().getFullYear()} Slowburn. All rights reserved.
         </p>
       </div>

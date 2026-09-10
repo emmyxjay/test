@@ -7,21 +7,21 @@ const lines = [
 
 export function Mirror() {
   return (
-    <section className="rail section">
+    <section className="rail py-[var(--section-gap)]">
       <div className="grid gap-[52px] lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="t-caption">The actual problem</p>
-          <h2 className="t-display mt-[16px] max-w-[16ch] text-balance">
+          <h2 className="t-display mt-[16px] max-w-[16ch]">
             Distribution is a schedule problem, not a talent problem.
           </h2>
         </div>
 
         <div>
-          <ul className="border-t border-[var(--color-walnut)]">
+          <ul className="border-t border-line">
             {lines.map((l) => (
               <li
                 key={l}
-                className="border-b border-[var(--color-walnut)] py-[18px] text-[19px] leading-[1.4] text-[var(--color-warm-cream)]"
+                className="border-b border-line py-[18px] text-[19px] leading-[1.45] text-ink"
               >
                 {l}
               </li>

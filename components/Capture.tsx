@@ -3,7 +3,7 @@ import { ArrowCircle } from "./ui/ArrowCircle";
 
 export function Capture() {
   return (
-    <section id="capture" className="section scroll-mt-[68px]">
+    <section id="capture" className="scroll-mt-[72px] py-[var(--section-gap)]">
       <div className="rail">
         <div className="grid items-end gap-[52px] lg:grid-cols-[1fr_1fr]">
           <div>
@@ -32,7 +32,7 @@ export function Capture() {
                 type="email"
                 required
                 placeholder="you@yourcompany.com"
-                className="w-full rounded-[9999px] border border-[var(--color-cedar)] bg-transparent px-[20px] py-[13px] text-[14px] text-[var(--color-warm-cream)] transition-colors focus:border-[var(--color-amber-forge)] focus:outline-none"
+                className="w-full rounded-[9999px] border border-field bg-transparent px-[22px] py-[14px] text-[16px] text-ink transition-colors focus:border-accent focus:outline-none"
               />
               <Button type="submit" variant="amber" className="shrink-0">
                 Send it weekly
@@ -41,7 +41,7 @@ export function Capture() {
                 <ArrowCircle size={44} />
               </span>
             </div>
-            <p className="text-[13px] text-[var(--color-driftwood)]">
+            <p className="text-[14px] text-label">
               No sharing, no resale, one unsubscribe link in every issue.
             </p>
           </form>

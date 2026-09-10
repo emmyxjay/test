@@ -2,20 +2,18 @@ import type { ReactNode } from "react";
 
 export function Badge({
   children,
-  tone = "walnut",
+  tone = "outline",
 }: {
   children: ReactNode;
-  tone?: "walnut" | "amber" | "cream";
+  tone?: "outline" | "accent";
 }) {
   const tones = {
-    walnut: "bg-[var(--color-walnut)] text-[var(--color-warm-cream)]",
-    amber: "bg-[var(--color-amber-forge)] text-[var(--color-espresso)]",
-    cream:
-      "border border-[var(--color-warm-cream)] text-[var(--color-warm-cream)]",
+    outline: "border border-ink text-ink",
+    accent: "bg-accent text-on-accent",
   } as const;
   return (
     <span
-      className={`inline-flex items-center rounded-[9999px] px-[10px] py-[5px] text-[12px] leading-none tracking-[0.01em] ${tones[tone]}`}
+      className={`inline-flex items-center rounded-[9999px] px-[12px] py-[6px] text-[13px] leading-none ${tones[tone]}`}
     >
       {children}
     </span>
