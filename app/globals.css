@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Slowburn design tokens
+
+   Two layers on purpose:
+
+   1. Palette   — the raw warm colours from the source system.
+   2. Semantics — --bg / --ink / --line etc, which the components use.
+
+   Only layer 2 changes between themes, so a component never needs to
+   know which theme it is in. Inverted bands work the same way: a band
+   redefines the semantic vars locally and everything inside follows.
+   ------------------------------------------------------------------ */
+
+@theme {
+  /* Palette */
+  --color-espresso: #140b00;
+  --color-midnight-cocoa: #0b0600;
+  --color-warm-cream: #fff1e0;
+  --color-linen: #fffaf2;
+  --color-parchment: #f7ead7;
+  --color-walnut: #43392d;
+  --color-cedar: #4f4538;
+  --color-driftwood: #85796c;
+  --color-amber-forge: #ffb442;
+
+  /* Semantic aliases, so utilities read as bg-canvas / text-ink / border-line */
+  --color-canvas: var(--bg);
+  --color-deep: var(--bg-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-label: var(--ink-label);
+  --color-line: var(--line);
+  --color-field: var(--field);
+  --color-accent: #ffb442;
+  --color-on-accent: var(--on-accent);
+
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 6px;
+  --radius-pill: 9999px;
+}
+
+/* ---------- Dark, the brand default ---------- */
+:root {
+  --bg: #140b00;
+  --bg-deep: #0b0600;
+  --ink: #fff1e0;
+  --ink-muted: #b0a596; /* ~8:1 on canvas */
+  --ink-label: #8f8376; /* ~5.2:1, small labels only */
+  --line: #43392d;
+  --field: #4f4538;
+  --on-accent: #140b00;
+  --wash: 0.16;
+  --scrim: 30%;
+
+  /* The inverted band flips to light in this theme */
+  --bg-inverse: #fff1e0;
+  --ink-inverse: #140b00;
+  --ink-muted-inverse: #4f4538;
+  --line-inverse: #d9c7ae;
+
+  color-scheme: dark;
+}
+
+/* ---------- Light ----------
+   Declared twice: once for viewers on the default "system" setting whose
+   OS is light (nothing is stamped on the root element, so only the media
+   query separates them), and once for an explicit choice. The media query
+   is guarded so an explicit dark choice still wins on a light OS. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #fffaf2;
+    --bg-deep: #f7ead7;
+    --ink: #140b00;
+    --ink-muted: #4f4538; /* ~9:1 on canvas */
+    --ink-label: #6b5f50; /* ~6:1 */
+    --line: #e0cdb3;
+    --field: #c9b294;
+    --on-accent: #140b00;
+    --wash: 0.14;
+    --scrim: 0%;
+
+    --bg-inverse: #140b00;
+    --ink-inverse: #fff1e0;
+    --ink-muted-inverse: #b0a596;
+    --line-inverse: #43392d;
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #fffaf2;
+  --bg-deep: #f7ead7;
+  --ink: #140b00;
+  --ink-muted: #4f4538;
+  --ink-label: #6b5f50;
+  --line: #e0cdb3;
+  --field: #c9b294;
+  --on-accent: #140b00;
+  --wash: 0.14;
+  --scrim: 0%;
+
+  --bg-inverse: #140b00;
+  --ink-inverse: #fff1e0;
+  --ink-muted-inverse: #b0a596;
+  --line-inverse: #43392d;
+
+  color-scheme: light;
+}
+
+:root {
+  /* Spacing scale, kept as documentation values.
+     These deliberately do NOT live in @theme: naming them --spacing-N
+     there overwrites Tailwind's numeric scale, which silently turns
+     h-10 into 10px instead of 40px. */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-52: 52px;
+  --space-72: 72px;
+
+  /* Type scale. The source spec listed fixed pixel sizes with no
+     responsive rules; an 81px hero at 0.8 line-height breaks on a phone.
+     Display sizes clamp and keep the specified tracking ratio. */
+  --text-caption: 12px;
+  --text-body: 16px;
+  --text-body-lg: 17px;
+  --text-subheading: 19px;
+  --text-heading-sm: clamp(20px, 1.4vw + 15px, 22px);
+  --text-heading-lg: clamp(28px, 3vw + 16px, 35px);
+  --text-display: clamp(32px, 4vw + 16px, 43px);
+  --text-display-lg: clamp(36px, 5vw + 16px, 55px);
+  --text-hero: clamp(42px, 6.6vw + 12px, 73px);
+  --text-hero-xl: clamp(46px, 7.4vw + 12px, 81px);
+
+  --section-gap: clamp(52px, 8vw, 112px);
+  --page-max-width: 1200px;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    font-weight: 400;
+    font-feature-settings: "kern" on, "liga" on;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* The system forbids glows, which would normally take focus rings with
+     it. A hard 2px amber outline with offset is visible on both grounds. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #140b00;
+  }
+
+  ::placeholder {
+    color: var(--ink-label);
+  }
+}
+
+@layer components {
+  .rail {
+    width: 100%;
+    max-width: var(--page-max-width);
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .rail {
+      padding-inline: 32px;
+    }
+  }
+
+  /* A band one step deeper than the canvas: midnight cocoa in dark,
+     parchment in light. */
+  .band-deep {
+    background-color: var(--bg-deep);
+  }
+
+  /* A band that flips the whole system: a cream band on the dark theme,
+     an espresso band on the light one.
+
+     Both sets have to be redeclared here. A custom property whose value
+     is another var() resolves that reference where it is DECLARED, so
+     --color-ink: var(--ink) computed at :root and inherits down as a
+     literal. Redefining only --ink on this band leaves every Tailwind
+     utility still pointing at the page's ink, which reads espresso on
+     espresso. The --color-* aliases below are what the utilities read. */
+  .band-inverse {
+    --bg: var(--bg-inverse);
+    --ink: var(--ink-inverse);
+    --ink-muted: var(--ink-muted-inverse);
+    --ink-label: var(--ink-muted-inverse);
+    --line: var(--line-inverse);
+
+    --color-canvas: var(--bg-inverse);
+    --color-ink: var(--ink-inverse);
+    --color-muted: var(--ink-muted-inverse);
+    --color-label: var(--ink-muted-inverse);
+    --color-line: var(--line-inverse);
+
+    background-color: var(--bg);
+    color: var(--ink);
+  }
+
+  /* Display type. Tight negative tracking scaled to size, per the source
+     system: -0.05px at 22px down to -1.13px at 81px. */
+  .t-hero-xl {
+    font-size: var(--text-hero-xl);
+    line-height: 0.92;
+    letter-spacing: -0.014em;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  .t-hero {
+    font-size: var(--text-hero);
+    line-height: 1;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  .t-display-lg {
+    font-size: var(--text-display-lg);
+    line-height: 1.06;
+    letter-spacing: -0.008em;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  .t-display {
+    font-size: var(--text-display);
+    line-height: 1.1;
+    letter-spacing: -0.007em;
+    font-weight: 400;
+    text-wrap: balance;
+  }
+  .t-heading-lg {
+    font-size: var(--text-heading-lg);
+    line-height: 1.1;
+    letter-spacing: -0.006em;
+    font-weight: 400;
+  }
+  .t-heading-sm {
+    font-size: var(--text-heading-sm);
+    line-height: 1.2;
+    letter-spacing: -0.002em;
+    font-weight: 500;
+  }
+  .t-caption {
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-label);
+  }
+
+  /* Long-form reading styles. The source system had none. */
+  .prose-warm {
+    max-width: 64ch;
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--ink-muted);
+  }
+  .prose-warm strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .prose-warm a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 3px;
+  }
+}
